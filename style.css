@@ -4,14 +4,12 @@ html, body {
 body {
     margin: 0;
     box-sizing: border-box;
-    /*overflow: hidden;*/
 }
 .container {
     margin: 20px;
     padding: 20px;
     box-sizing: border-box;
-    height: 100%;
-    /*background: #bcb4b4;*/
+    height: 100%
 }
 canvas {
     background: #efefef;
