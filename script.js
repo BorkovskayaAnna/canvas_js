@@ -23,9 +23,6 @@ if (canvas.getContext) {
     canvas.onmouseup = mouseUp;
     canvas.onmousemove = mouseMove;
 
-
-
-
     function Rect(x, y, w, h) {
         this.x = x;
         this.y = y;
@@ -56,47 +53,10 @@ if (canvas.getContext) {
 
     drawRect();
 
-    /*let mouse = {
-        position : {x:0, y:0},
-        down : false,
-        downedPos :{x:0, y:0},
-        upedPos :{x:0, y:0},
-    }*/
-
-
-   /* mouse.getPosition = function(element, e) {
-
-        this.position.x = e.clientX - offsetX
-        this.position.y = e.clientY - offsetY
-        //console.log('get pos ' + this.position.x,this.position.y )
-        return this.position;
-    }*/
- /*   Rect.getPosition = function(element, e) {
-
-        this.x = e.clientX - offsetX
-        this.y = e.clientY - offsetY
-        // console.log('initial pos ' + this.x,this.y ) //should be 0 0
-        return this;
-    }*/
-
-   /* function clone(obj) {
-        if (null == obj || "object" != typeof obj) return obj;
-        const copy = obj.constructor();
-        for (let attr in obj) {
-            if (obj.hasOwnProperty(attr)) copy[attr] = obj[attr];
-        }
-        return copy;
-    }*/
-
 // handle mousedown events
     function mouseDown(e) {
         e.preventDefault();
         e.stopPropagation();
-
-
-        // let rectPos = Rect.getPosition(this, e);
-
-        //Rect.downedPos = clone(rectPos);
 
         // current mouse pos
         mouseX = e.clientX - offsetX
@@ -112,11 +72,9 @@ if (canvas.getContext) {
             if (mouseX > current.x && mouseX < rectW &&
                 mouseY > current.y && mouseY < rectH) {
                 isDrag = true;
-                // console.log('moose down ' + Rect.downedPos.x, Rect.downedPos.y)
             }
         }
         drawRect()
-
 
         startX = mouseX;
         startY = mouseY;
@@ -129,15 +87,6 @@ if (canvas.getContext) {
 
             e.preventDefault();
             e.stopPropagation();
-
-            //let rectPos = Rect.getPosition(this, e);
-
-            //Rect.downedPos = clone(rectPos);
-            /*if(mouse.down){
-                mouse.upedPos = clone(ms);
-*/
-                //console.log('mouse move ' + Rect.downedPos.x,Rect.downedPos.y)
-            //}
 
             mouseX = e.clientX - offsetX;
             mouseY = e.clientY - offsetY;
@@ -168,36 +117,13 @@ if (canvas.getContext) {
     }
 
     // handle mouseup events
-    function mouseUp(e) {
+    function mouseUp() {
         isDrag = false;
-        //mouse.down = false;
-
-
-
-        /*let rectPos = Rect.getPosition(this, e);
-
-        Rect.upedPos = clone(rectPos);*/
-
-        //console.log('mouseUp ' + Rect.downedPos.x,Rect.downedPos.y)
-
-        /*if(Rect.downedPos){
-            Rect.downedPos = clone(rectPos);
-            console.log('mouse up ' + Rect.downedPos.x, Rect.downedPos.y);
-        }*/
-
-
-        /*detectOverlap();
-        drawRect();*/
-
-
-        /*drawRect();*/
     }
 
-    function detectOverlap(e) {
+    function detectOverlap() {
         let obj1;
         let obj2;
-
-        //let ms = mouse.getPosition(this);
 
         for (let i = 0; i < rectsArr.length; i++) {
             rectsArr[i].isOverlapping = false;
@@ -211,20 +137,11 @@ if (canvas.getContext) {
                 if (rectOverlapping(obj1.x, obj1.y, obj1.w, obj1.h, obj2.x, obj2.y, obj2.w, obj2.h)) {
                     obj1.isOverlapping = true;
                     obj2.isOverlapping = true;
-                    // console.log(Rect.upedPos);
-                    // console.log(Rect.upedPos.x)
-                    // console.log('mouse up ' + Rect.downedPos.x, Rect.downedPos.y);
-                    // console.log('mouse up ' + Rect.upedPos.x, Rect.upedPos.y);
-                    /*obj1.x = Rect.downedPos.x;
-                    obj1.y = Rect.downedPos.y;*/
                 }
 
                 if(rectGravity(obj1.x, obj1.y, obj1.w, obj1.h, obj2.x, obj2.y, obj2.w, obj2.h) ) {
-                     //console.log('object is closer then 9 pixels');
-                    //return obj1.x = obj2.x + obj2.w
+                     console.log('object is closer then 9 pixels');
                 }
-
-                //console.log(Rect.upedPos)
             }
         }
         return true
